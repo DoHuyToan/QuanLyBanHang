@@ -1,0 +1,13 @@
+use tourmanager;
+
+# số lượng tour tại các thành phố
+select city, count(destination) from city join destination d on city.city_id = d.destination_id group by city;
+
+# thống kê các tour bắt đầu trong tháng 3/2021
+select tourcode_id, startdate from tour where startdate >= '2021/10/1' and startdate < '2021/11/1';
+
+select tourcode_id, startdate from tour where month(startdate) = 10 and day(startdate) >= 1;
+
+# tính tổng số tour bắt đầu trong tháng 3/2021
+select count(tourcode_id) as 'Số tour trong tháng 3/2021'
+from tour where month(startdate) = 10 and day(startdate) >= 1;
