@@ -11,3 +11,38 @@ select tourcode_id, startdate from tour where month(startdate) = 10 and day(star
 # tính tổng số tour bắt đầu trong tháng 3/2021
 select count(tourcode_id) as 'Số tour trong tháng 3/2021'
 from tour where month(startdate) = 10 and day(startdate) >= 1;
+
+# Create table City(
+#     city_id int auto_increment primary key ,
+#     city_name nvarchar(255) not null
+# );
+#
+# create table Tour(
+#     tour_id int auto_increment primary key ,
+#     tour_code varchar(255) not null ,
+#     type_id int not null,
+#     price double not null ,
+#     start_date date not null ,
+#     end_date date not null
+# );
+#
+# create table TouristLocation(
+#     tourist_location_id int auto_increment primary key ,
+#     location_name nvarchar(255) not null ,
+#     average_price double not null ,
+#     city_id nvarchar(255) not null,
+#     description nvarchar(500) null
+# );
+#
+# create table TourLocationDetail(
+#     location_detail_id  int primary key auto_increment,
+#     tour_id  int not null ,
+#     tourist_location_id int not null ,
+#     foreign key (tour_id) references Tour(tour_id),
+#     foreign key (tourist_location_id) references  TouristLocation(tourist_location_id)
+# );
+#
+# select city_name,count(city_name) 'number of tour' from Tour
+#     join TourLocationDetail TLD on Tour.tour_id = TLD.tour_id
+#     join TouristLocation TL on TLD.tourist_location_id = TL.tourist_location_id
+#     join City C on TL.city_id = C.city_id group by city_name;
